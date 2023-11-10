@@ -24,3 +24,14 @@ function divide (num1, num2) {
 function operate (operator, num1, num2) {
   return operatorFunction[operator](num1, num2);
 }
+
+function addToDisplay (char) {
+  displayNumber.textContent += char;
+}
+
+const displayNumber = document.querySelector(".number");
+const displayOperation = document.querySelector(".operation");
+const numberButtons = document.querySelectorAll(".number-button");
+for (const button of numberButtons) {
+  button.addEventListener("click", e => addToDisplay(button.textContent));
+}
