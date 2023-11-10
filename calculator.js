@@ -40,7 +40,13 @@ function addToDisplay (char) {
     anotherButtonPressed = true;
   }
   if (evaluated) {
+    currentNumber = displayNumber.textContent;
     resetDisplay();
+    if (char === "clear") {
+      displayNumber.textContent = currentNumber;
+      num1 = currentNumber;
+      return;
+    }
   }
   if (char !== "clear") {
     displayNumber.textContent += char;
