@@ -27,6 +27,8 @@ function operate (operator, num1, num2) {
 
 function resetDisplay () {
   num1 = null;
+  num2 = null;
+  currentOperator = null;
   displayNumber.textContent = "";
   displayOperation.textContent = "";
   operationContentChanged = false;
@@ -89,7 +91,7 @@ function evaluate () {
 
 let num1 = null;
 let num2 = null;
-let currentOperator;
+let currentOperator = null;
 let anotherButtonPressed = false;
 let operationContentChanged = false;
 let evaluated = false;
