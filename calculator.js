@@ -60,7 +60,7 @@ function addToOperation (operator) {
     num2 = num1;
     displayNumber.textContent = answer;
     displayOperation.textContent = `${num1} ${operator} `;
-    currentOperator = operator
+    currentOperator = operator;
   }
   anotherButtonPressed = false;
   evaluated = false;
