@@ -42,8 +42,13 @@ function addToDisplay (char) {
   if (evaluated) {
     resetDisplay();
   }
-  displayNumber.textContent += char;
-  num2 = +displayNumber.textContent;
+  if (char !== "clear") {
+    displayNumber.textContent += char;
+    num2 = +displayNumber.textContent;
+  } else if (displayNumber.textContent !== "") {
+    displayNumber.textContent = displayNumber.textContent.slice(0, -1);
+    if (displayNumber.textContent !== "") num2 = +displayNumber.textContent;
+  }
 }
 
 function addToOperation (operator) {
@@ -94,3 +99,7 @@ for (const button of operatorButtons) {
 }
 const equals = document.querySelector("#equals");
 equals.addEventListener("click", evaluate);
+const clear = document.querySelector("#clear");
+clear.addEventListener("click", e => addToDisplay("clear"));
+const allClear = document.querySelector("#all-clear");
+allClear.addEventListener("click", resetDisplay);
