@@ -27,9 +27,9 @@ function operate (operator, num1, num2) {
 
 function resetDisplay () {
   num1 = null;
-  num2 = null;
+  num2 = 0;
   currentOperator = null;
-  displayNumber.textContent = "";
+  displayNumber.textContent = "0";
   displayOperation.textContent = "";
   operationContentChanged = false;
   anotherButtonPressed = false;
@@ -38,7 +38,7 @@ function resetDisplay () {
 
 function addToDisplay (char) {
   if (operationContentChanged && !anotherButtonPressed) {
-    displayNumber.textContent = "";
+    displayNumber.textContent = "0";
     anotherButtonPressed = true;
   }
   if (evaluated) {
@@ -51,11 +51,16 @@ function addToDisplay (char) {
     }
   }
   if (char !== "clear") {
-    displayNumber.textContent += char;
+    if (displayNumber.textContent === "0") {
+      displayNumber.textContent = char
+    } else {
+      displayNumber.textContent += char;
+    }
     num2 = +displayNumber.textContent;
-  } else if (displayNumber.textContent !== "") {
+  } else if (displayNumber.textContent !== "0") {
     displayNumber.textContent = displayNumber.textContent.slice(0, -1);
-    if (displayNumber.textContent !== "") num2 = +displayNumber.textContent;
+    if (displayNumber.textContent === "") displayNumber.textContent = "0";
+    num2 = +displayNumber.textContent;
   }
 }
 
@@ -80,7 +85,7 @@ function addToOperation (operator) {
 }
 
 function evaluate () {
-  if (num1 !== null && num2 !== null) {
+  if (num1 !== null) {
     answer = operate(currentOperator, num1, num2);
     displayOperation.textContent = `${num1} ${currentOperator} ${num2} = `;
     displayNumber.textContent = answer;
@@ -90,7 +95,7 @@ function evaluate () {
 }
 
 let num1 = null;
-let num2 = null;
+let num2 = 0;
 let currentOperator = null;
 let anotherButtonPressed = false;
 let operationContentChanged = false;
