@@ -43,11 +43,11 @@
   border: 3px solid rgb(107, 59, 0);
 }
 
-.number-button:hover, .operator-button:hover {
+button:hover {
   filter: brightness(0.8);
 }
 
-.number-button:active, .operator-button:active {
+button:active {
   filter: brightness(0.5);
   transform: scale(0.9);
 }
