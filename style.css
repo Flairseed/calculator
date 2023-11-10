@@ -1,9 +1,11 @@
 .calculator-body {
-  display: inline-block;
+  display: block;
+  width: 300px;
   background-color: rgb(61, 61, 61);
   padding: 20px;
   border: 3px solid black;
   border-radius: 20px;
+  margin: 200px auto;
 }
 
 .display {
