@@ -37,6 +37,10 @@ function resetDisplay () {
 }
 
 function addToDisplay (char) {
+  if (char == "." && displayNumber.textContent.includes(".")) {
+    return;
+  }
+
   if (operationContentChanged && !anotherButtonPressed) {
     displayNumber.textContent = "0";
     anotherButtonPressed = true;
@@ -51,7 +55,7 @@ function addToDisplay (char) {
     }
   }
   if (char !== "clear") {
-    if (displayNumber.textContent === "0") {
+    if (displayNumber.textContent === "0" && char != ".") {
       displayNumber.textContent = char
     } else {
       displayNumber.textContent += char;
@@ -116,3 +120,5 @@ const clear = document.querySelector("#clear");
 clear.addEventListener("click", e => addToDisplay("clear"));
 const allClear = document.querySelector("#all-clear");
 allClear.addEventListener("click", resetDisplay);
+const point = document.querySelector("#point");
+point.addEventListener("click", e => addToDisplay("."))
