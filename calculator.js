@@ -34,6 +34,7 @@ function addToDisplay (char) {
     num1 = null;
     displayOperation.textContent = "";
     operationContentChanged = false;
+    anotherButtonPressed = false;
     evaluated = false;
   }
   displayNumber.textContent += char;
