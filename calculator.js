@@ -47,7 +47,7 @@ function addToDisplay (char) {
 }
 
 function addToOperation (operator) {
-  if (!anotherButtonPressed) {
+  if (!anotherButtonPressed || evaluated) {
     currentOperator = operator;
     num1 = +displayNumber.textContent;
     displayOperation.textContent = `${num1} ${operator} `;
@@ -61,8 +61,8 @@ function addToOperation (operator) {
     displayNumber.textContent = answer;
     displayOperation.textContent = `${num1} ${operator} `;
     currentOperator = operator
-    anotherButtonPressed = false;
   }
+  anotherButtonPressed = false;
   evaluated = false;
 }
 
