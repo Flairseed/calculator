@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .calculator-body {
   display: block;
   width: 300px;
@@ -60,4 +64,14 @@ button:hover {
 .active, button:active {
   filter: brightness(0.5);
   transform: scale(0.9);
+}
+
+.footer {
+  text-align: center;
+  background-color: rgb(255, 245, 110);
+  padding: 30px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
 }
