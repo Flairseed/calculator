@@ -101,12 +101,15 @@ function evaluate () {
 function linkKey (button, isNum) {
   const char = button.textContent;
   document.addEventListener("keydown", e => {
-    if (char === "C" || char === "AC") {
+    if (char === "C" || char === "AC" || char === "=") {
       if (char === "C" && e.key === "Backspace") {
         addToDisplay("clear");
         button.classList.add("active");
       } else if (char === "AC" && e.key === "Delete") {
         resetDisplay();
+        button.classList.add("active");
+      } else if (char === "=" && (e.key === "=" || e.key == "Enter")) {
+        evaluate();
         button.classList.add("active");
       }
     } else {
@@ -139,6 +142,7 @@ for (const button of operatorButtons) {
 }
 const equals = document.querySelector("#equals");
 equals.addEventListener("click", evaluate);
+linkKey(equals);
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", e => addToDisplay("clear"));
 linkKey(clear);
@@ -147,3 +151,4 @@ allClear.addEventListener("click", resetDisplay);
 linkKey(allClear);
 const point = document.querySelector("#point");
 point.addEventListener("click", e => addToDisplay("."))
+linkKey(point, true);
