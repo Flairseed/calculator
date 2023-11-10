@@ -84,7 +84,7 @@ let operationContentChanged = false;
 let evaluated = false;
 const displayNumber = document.querySelector(".number");
 const displayOperation = document.querySelector(".operation");
-const numberButtons = document.querySelectorAll(".number-button:not(.equals):not(.point)");
+const numberButtons = document.querySelectorAll(".number-button:not(#equals):not(#point)");
 for (const button of numberButtons) {
   button.addEventListener("click", e => addToDisplay(button.textContent));
 }
@@ -92,5 +92,5 @@ const operatorButtons = document.querySelectorAll(".operator-button");
 for (const button of operatorButtons) {
   button.addEventListener("click", e => addToOperation(button.textContent));
 }
-const equals = document.querySelector(".equals");
+const equals = document.querySelector("#equals");
 equals.addEventListener("click", evaluate);
