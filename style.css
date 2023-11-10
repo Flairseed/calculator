@@ -38,7 +38,13 @@
   margin: 10px 5px;
 }
 
-.operator-button, .clear-button {
+.clear-button {
+  width: 140px;
+  background-color: rgb(255, 99, 99);
+  border: 3px solid rgb(110, 0, 0);
+}
+
+.operator-button {
   background-color: orange;
   border: 3px solid rgb(107, 59, 0);
 }
