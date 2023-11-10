@@ -8,12 +8,24 @@
 
 .display {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
   background-color: rgb(231, 255, 253);
+  padding: 10px;
   border: 3px solid lightblue;
   border-radius: 10px;
   width: 300px;
   height: 100px;
   margin-bottom: 30px;
+}
+
+.operation {
+  color: grey;
+}
+
+.number {
+  font-size: xx-large;
 }
 
 .number-button, .operator-button {
