@@ -31,7 +31,7 @@ function addToDisplay (char) {
 
 const displayNumber = document.querySelector(".number");
 const displayOperation = document.querySelector(".operation");
-const numberButtons = document.querySelectorAll(".number-button");
+const numberButtons = document.querySelectorAll(".number-button:not(.equals):not(.point)");
 for (const button of numberButtons) {
   button.addEventListener("click", e => addToDisplay(button.textContent));
 }
