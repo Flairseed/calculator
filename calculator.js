@@ -46,7 +46,7 @@ function addToDisplay (char) {
     resetDisplay();
     if (char === "clear") {
       displayNumber.textContent = currentNumber;
-      num1 = currentNumber;
+      num2 = currentNumber;
       return;
     }
   }
