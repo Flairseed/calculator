@@ -18,6 +18,7 @@ function multiply (num1, num2) {
 }
 
 function divide (num1, num2) {
+  if (num2 === 0) return "ERROR: div by 0";
   return num1 / num2;
 }
 
@@ -71,6 +72,7 @@ function addToDisplay (char) {
 function addToOperation (operator) {
   if (!anotherButtonPressed || evaluated) {
     currentOperator = operator;
+    if (displayNumber.textContent.includes("ERROR")) displayNumber.textContent = "0";
     num1 = +displayNumber.textContent;
     displayOperation.textContent = `${num1} ${operator} `;
     operationContentChanged = true;
@@ -92,11 +94,15 @@ function evaluate () {
   if (num1 !== null) {
     answer = operate(currentOperator, num1, num2);
     displayOperation.textContent = `${num1} ${currentOperator} ${num2} = `;
-    if (String(answer).length > 17) {
+    if (String(answer).length > 17 && !String(answer).includes("ERROR")) {
       answer = new Number(answer).toExponential(9);
     }
     displayNumber.textContent = answer;
-    num1 = +answer;
+    if (!String(answer).includes("ERROR")) {
+      num1 = +answer;
+    } else {
+      num1 = null;
+    }
     evaluated = true;
   }
 }
