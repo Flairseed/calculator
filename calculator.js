@@ -25,17 +25,22 @@ function operate (operator, num1, num2) {
   return operatorFunction[operator](num1, num2);
 }
 
+function resetDisplay () {
+  num1 = null;
+  displayNumber.textContent = "";
+  displayOperation.textContent = "";
+  operationContentChanged = false;
+  anotherButtonPressed = false;
+  evaluated = false;
+}
+
 function addToDisplay (char) {
   if (operationContentChanged && !anotherButtonPressed) {
     displayNumber.textContent = "";
     anotherButtonPressed = true;
   }
   if (evaluated) {
-    num1 = null;
-    displayOperation.textContent = "";
-    operationContentChanged = false;
-    anotherButtonPressed = false;
-    evaluated = false;
+    resetDisplay();
   }
   displayNumber.textContent += char;
   num2 = +displayNumber.textContent;
@@ -68,7 +73,6 @@ function evaluate () {
     displayNumber.textContent = answer;
     num1 = answer;
     evaluated = true;
-    anotherButtonPressed = false;
   }
 }
 
