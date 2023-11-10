@@ -98,6 +98,27 @@ function evaluate () {
   }
 }
 
+function linkKey (button, isNum) {
+  const char = button.textContent;
+  document.addEventListener("keydown", e => {
+    if (char === "C" || char === "AC") {
+      if (char === "C" && e.key === "Backspace") {
+        addToDisplay("clear");
+        button.classList.add("active");
+      } else if (char === "AC" && e.key === "Delete") {
+        resetDisplay();
+        button.classList.add("active");
+      }
+    } else {
+      if (e.key === char) {
+        isNum ? addToDisplay(char) : addToOperation(char);
+        button.classList.add("active");
+      }
+    }
+  });
+  document.addEventListener("keyup", e => button.classList.remove("active"));
+}
+
 let num1 = null;
 let num2 = 0;
 let currentOperator = null;
@@ -109,16 +130,20 @@ const displayOperation = document.querySelector(".operation");
 const numberButtons = document.querySelectorAll(".number-button:not(#equals):not(#point)");
 for (const button of numberButtons) {
   button.addEventListener("click", e => addToDisplay(button.textContent));
+  linkKey(button, true);
 }
 const operatorButtons = document.querySelectorAll(".operator-button");
 for (const button of operatorButtons) {
   button.addEventListener("click", e => addToOperation(button.textContent));
+  linkKey(button, false);
 }
 const equals = document.querySelector("#equals");
 equals.addEventListener("click", evaluate);
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", e => addToDisplay("clear"));
+linkKey(clear);
 const allClear = document.querySelector("#all-clear");
 allClear.addEventListener("click", resetDisplay);
+linkKey(allClear);
 const point = document.querySelector("#point");
 point.addEventListener("click", e => addToDisplay("."))
