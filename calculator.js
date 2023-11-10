@@ -58,7 +58,7 @@ function addToDisplay (char) {
     if (displayNumber.textContent === "0" && char != ".") {
       displayNumber.textContent = char
     } else {
-      displayNumber.textContent += char;
+      if (displayNumber.textContent.length < 17) displayNumber.textContent += char;
     }
     num2 = +displayNumber.textContent;
   } else if (displayNumber.textContent !== "0") {
@@ -92,8 +92,11 @@ function evaluate () {
   if (num1 !== null) {
     answer = operate(currentOperator, num1, num2);
     displayOperation.textContent = `${num1} ${currentOperator} ${num2} = `;
+    if (String(answer).length > 17) {
+      answer = new Number(answer).toExponential(9);
+    }
     displayNumber.textContent = answer;
-    num1 = answer;
+    num1 = +answer;
     evaluated = true;
   }
 }
